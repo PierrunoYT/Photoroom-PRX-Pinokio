@@ -1,6 +1,5 @@
-const path = require('path')
 module.exports = {
-  version: "1.0.0",
+  version: "5.0",
   title: "PRX-1024 Text-to-Image",
   description: "Gradio web interface for Photoroom's PRX-1024-t2i-beta text-to-image model",
   icon: "icon.jpg",
