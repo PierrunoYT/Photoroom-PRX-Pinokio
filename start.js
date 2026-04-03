@@ -11,7 +11,8 @@ module.exports = {
           "python app.py",
         ],
         on: [{
-          "event": "/http:\/\/\\S+/",   
+          // Capture the URL in group 1 for local.set (see Gepeto / PINOKIO.md shell.run + local.set pattern)
+          "event": "/(http:\/\/\\S+)/",
           "done": true
         }]
       }
@@ -19,7 +20,7 @@ module.exports = {
     {
       method: "local.set",
       params: {
-        url: "{{input.event[0]}}"
+        url: "{{input.event[1]}}"
       }
     }
   ]
