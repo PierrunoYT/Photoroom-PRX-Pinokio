@@ -1,8 +1,5 @@
 module.exports = {
   version: "5.0",
-  title: "PRX-1024 Text-to-Image",
-  description: "Gradio web interface for Photoroom's PRX-1024-t2i-beta text-to-image model",
-  icon: "icon.jpg",
   menu: async (kernel, info) => {
     let installed = info.exists("app/env")
     let running = {
