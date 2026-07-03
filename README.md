@@ -1,4 +1,4 @@
-# Photroom-PRX Pinokio
+# Photoroom-PRX Pinokio
 
 Pinokio launcher for [photoroom-prx-local](https://github.com/PierrunoYT/photoroom-prx-local): a local Gradio UI for Photoroom’s **PRX-1024** text-to-image model (`PRX-1024-t2i-beta`).
 
@@ -12,7 +12,7 @@ Pinokio launcher for [photoroom-prx-local](https://github.com/PierrunoYT/photoro
 ## How to use
 
 1. Install [Pinokio](https://pinokio.computer/).
-2. Install this project from URL: `https://github.com/PierrunoYT/Photroom-PRX-Pinokio`
+2. Install this project from URL: `https://github.com/PierrunoYT/Photoroom-PRX-Pinokio`
 3. Run **Install**, then **Start**. When the server prints an `http://` URL, use **Open Web UI** or the terminal tab.
 
 The Gradio app typically listens on **127.0.0.1**; the exact port is chosen at runtime (see the terminal output).
