@@ -1,2 +1,14 @@
+# Cloned by install.js (includes the app/env virtualenv and downloaded weights)
 app/
+
+# Pinokio execution logs
 logs/
+
+# Open Edit managed clone
+.open-edit/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+node_modules/
+__pycache__/
