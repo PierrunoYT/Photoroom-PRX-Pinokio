@@ -32,14 +32,15 @@ module.exports = {
       },
       "next": null
     },
-    // amd windows
+    // amd windows: app.py only selects cuda or cpu, and torch-directml pins
+    // torch 2.4.x (upstream requires torch>=2.6), so use the CPU build
     {
       "when": "{{gpu === 'amd' && platform === 'win32'}}",
       "method": "shell.run",
       "params": {
         "venv": "{{args && args.venv ? args.venv : null}}",
         "path": "{{args && args.path ? args.path : '.'}}",
-        "message": "uv pip install torch torch-directml torchaudio torchvision numpy==1.26.4 --force-reinstall"
+        "message": "uv pip install torch==2.7.0 torchvision==0.22.0 torchaudio==2.7.0 --index-url https://download.pytorch.org/whl/cpu --force-reinstall --no-deps"
       },
       "next": null
     },
