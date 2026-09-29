@@ -6,7 +6,7 @@ Pinokio launcher for [photoroom-prx-local](https://github.com/PierrunoYT/photoro
 
 | Menu item | Script | What it does |
 | --- | --- | --- |
-| **Install** | `install.js` | Clones the app into `app/`, creates the Python virtualenv at `app/env`, installs `diffusers` (from git), `transformers` and `requirements.txt`, then installs the platform-appropriate PyTorch build via `torch.js`. |
+| **Install** | `install.js` | Clones the app into `app/`, creates the Python virtualenv at `app/env`, installs the platform-appropriate PyTorch build via `torch.js`, then `diffusers` (from git), `transformers` and `requirements.txt`. |
 | **Start** | `start.js` | Runs `python app.py` from `app/` as a daemon, captures the local URL the server prints, and exposes **Open Web UI** in the Pinokio sidebar. |
 | **Update** | `update.js` | `git pull` in the launcher folder and in `app/`. |
 | **Save Disk Space** | `link.js` | Deduplicates redundant library files in `app/env` via `fs.link`. |
@@ -91,8 +91,9 @@ The stream ends with a `data:` line containing the result — the image entry ca
 
 ## Requirements
 
-- Windows, Linux, or macOS. `torch.js` selects the right PyTorch build per platform/GPU (NVIDIA CUDA, AMD DirectML/ROCm, Apple Silicon, CPU fallback).
-- Python 3.8+ (provided by Pinokio's bundled environment).
+- Windows, Linux, or macOS. `torch.js` selects the right PyTorch build per platform/GPU: NVIDIA CUDA (Windows/Linux), AMD ROCm (Linux), and a CPU build everywhere else.
+- `app.py` only uses `cuda` (which includes ROCm) or falls back to `cpu`, so AMD GPUs on Windows and Apple Silicon Macs run on the **CPU** (slow). Intel Macs are not supported: the app requires `torch>=2.6.0`, and PyTorch no longer publishes Intel macOS wheels after 2.2.
+- Python 3.10 (provided by Pinokio's bundled environment; PyTorch 2.7 needs 3.9+).
 - ~5 GB of disk for model weights, plus the virtualenv. Sufficient RAM/VRAM for PRX-1024 inference — see the upstream repo.
 
 ## Links
