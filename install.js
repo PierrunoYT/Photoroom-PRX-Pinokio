@@ -8,6 +8,18 @@ module.exports = {
         ]
       }
     },
+    // Install the platform-specific torch build first so requirements.txt
+    // (torch>=2.6.0) reuses it instead of pulling the default PyPI wheel
+    {
+      method: "script.start",
+      params: {
+        uri: "torch.js",
+        params: {
+          venv: "env",
+          path: "app",
+        }
+      }
+    },
     {
       method: "shell.run",
       params: {
@@ -18,16 +30,6 @@ module.exports = {
           "uv pip install --upgrade transformers",
           "uv pip install -r requirements.txt"
         ]
-      }
-    },
-    {
-      method: "script.start",
-      params: {
-        uri: "torch.js",
-        params: {
-          venv: "env",
-          path: "app",
-        }
       }
     },
   ]
