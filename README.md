@@ -20,7 +20,7 @@ Installing only prepares the environment — nothing is launched until you run *
 2. Install this project from URL: `https://github.com/PierrunoYT/Photoroom-PRX-Pinokio`
 3. Run **Install**, then **Start**. When the server prints an `http://` URL, use **Open Web UI** or the terminal tab.
 
-The **first Start downloads roughly 5 GB of model weights** from Hugging Face before the UI becomes reachable, so the initial launch takes a while — watch the terminal tab for progress.
+The **first Start downloads roughly 21 GB of model weights** from Hugging Face before the UI becomes reachable, so the initial launch takes a while — watch the terminal tab for progress. The model repo ships the text encoder both as one file and as shards, and diffusers fetches both copies.
 
 `app.py` calls `demo.launch()` without a `server_name`, so the server binds to **127.0.0.1** and is not exposed on the network. The port defaults to **7860**; if that port is busy Gradio picks the next free one, which is why the launcher captures the URL from the terminal output rather than hardcoding it.
 
@@ -94,7 +94,7 @@ The stream ends with a `data:` line containing the result — the image entry ca
 - Windows, Linux, or macOS. `torch.js` selects the right PyTorch build per platform/GPU: NVIDIA CUDA (Windows/Linux), AMD ROCm (Linux), and a CPU build everywhere else.
 - `app.py` only uses `cuda` (which includes ROCm) or falls back to `cpu`, so AMD GPUs on Windows and Apple Silicon Macs run on the **CPU** (slow). Intel Macs are not supported: the app requires `torch>=2.6.0`, and PyTorch no longer publishes Intel macOS wheels after 2.2.
 - Python 3.10 (provided by Pinokio's bundled environment; PyTorch 2.7 needs 3.9+).
-- ~5 GB of disk for model weights, plus the virtualenv. Sufficient RAM/VRAM for PRX-1024 inference — see the upstream repo.
+- ~21 GB of disk for model weights (Hugging Face cache), plus the virtualenv. Sufficient RAM/VRAM for PRX-1024 inference — see the upstream repo.
 
 ## Links
 
